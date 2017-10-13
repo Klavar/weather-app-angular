@@ -7,24 +7,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
-let AppComponent = class AppComponent {
-};
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        template: `
-        <div class="container">
-            <div class="col-xs-4">
-            <weather-widget></weather-widget>
-            </div>
-        </div>
-    `,
-        styles: [`
-        .container {
-            padding-top: 5rem;
+let TempUnitPipe = class TempUnitPipe {
+    transform(temp, unitType) {
+        if (unitType == "celsius") {
+            const celsius = (temp - 32) * 0.5556;
+            return celsius;
         }
-    `]
+        else {
+            return temp;
+        }
+    }
+};
+TempUnitPipe = __decorate([
+    core_1.Pipe({
+        name: 'tempUnit'
     })
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+], TempUnitPipe);
+exports.TempUnitPipe = TempUnitPipe;
+//# sourceMappingURL=temp-unit.pipe.js.map
